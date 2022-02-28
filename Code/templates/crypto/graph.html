@@ -1,0 +1,22 @@
+{% extends 'coin_css.html' %}
+
+{% block title %} <title> Live Graph </title> {% endblock %}
+
+{% block content %}
+
+<div class="top_left">
+    Hello, {{ request.user.username }}
+</div>
+
+<div class="top_corner">
+    <input style="border:0px ; background-color: transparent; font-family:sans-serif; color:#fff;" type="submit" onclick="location.href='/logout';" name="" value="Logout">
+</div>
+
+<div class="top_corner_back">
+    <input style="border:0px ; background-color: transparent; font-family:sans-serif; color:#fff;" type="submit" onclick="location.href='/';" name="" value="Go Back">
+</div>
+
+<div class="footer" style="width:1260;height:620">
+    <center>{{ graph_div|safe }}</center>
+</div>
+{% endblock %}
