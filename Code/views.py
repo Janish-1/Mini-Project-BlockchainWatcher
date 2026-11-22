@@ -14,7 +14,7 @@ import requests
 
 from datetime import datetime, timedelta
 import pandas as pd
-import pandas_datareader as pdr
+import yfinance as yf
 import plotly.graph_objects as go
 import plotly
 
@@ -233,7 +233,14 @@ def getData(cryptocurrency):
     last_year_date = (now - timedelta(days=365)).strftime("%Y-%m-%d")
     start = pd.to_datetime(last_year_date)
     end = pd.to_datetime(current_date)
-    data = pdr.get_data_yahoo(f'{cryptocurrency}-{CURRENCY}', start, end)
+    data = yf.download(
+        f'{cryptocurrency}-{CURRENCY}',
+        start=start,
+        end=end,
+        auto_adjust=False,
+        multi_level_index=False,
+        progress=False,
+    )
     return data
 
 # def graph(request):
